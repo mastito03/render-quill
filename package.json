@@ -1,6 +1,6 @@
 {
   "name": "render-quill",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "render quill delta to html string on server",
   "main": "index.js",
   "scripts": {
