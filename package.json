@@ -1,0 +1,16 @@
+{
+  "name": "render-quill",
+  "version": "1.0.0",
+  "description": "render quill delta to html string on server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "quill",
+    "delta",
+    "render"
+  ],
+  "author": "mastito03",
+  "license": "ISC"
+}
