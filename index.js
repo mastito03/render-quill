@@ -43,7 +43,9 @@ module.exports = function render (delta, options, callback) {
 
     quill.setContents(delta)
 
-    callback(err, window.document.querySelector('.ql-editor').innerHTML)
+    if (typeof callback === "function") {
+      callback(err, window.document.querySelector('.ql-editor').innerHTML)
+    }
 
     window.close()
   })
