@@ -22,9 +22,9 @@ module.exports = function render (delta, options, callback) {
 
   if (options.scripts !== undefined) scripts += options.scripts
 
-  let bolts = []
+  let formats = {}
 
-  if (options.bolts !== undefined) bolts = options.bolts
+  if (options.formats !== undefined) formats = options.formats
 
   jsdom.env('<div id="editor"></div>', scripts, (err, window) => {
     if (err) return callback(err)
@@ -35,8 +35,9 @@ module.exports = function render (delta, options, callback) {
       }
     }
 
-    for (let i = 0; i < bolts.length; i++) {
-      window.Quill.register(bolts[i])
+    // register custom format
+    for ( let name in formats) {
+      window.Quill.register(name, formats[name])
     }
 
     let quill = new window.Quill('#editor', options)
