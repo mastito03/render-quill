@@ -2,7 +2,7 @@
 
 simple:
 
-```
+``` js
 var render = require('render-quill')
 
 var delta = {
