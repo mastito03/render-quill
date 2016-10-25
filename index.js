@@ -1,5 +1,6 @@
 'use strict'
 
+const Promise = require('promise')
 const jsdom = require('jsdom')
 const quill = require.resolve('quill')
 const mutationObserver = require.resolve('mutation-observer')
@@ -13,7 +14,7 @@ module.exports = function render (delta, options, callback) {
 
   delta = args.shift()
 
-  callback = args.pop()
+  callback = (typeof args[args.length-1] === 'function' ) ? args.pop() : undefined
 
   if (args.length > 0) options = args.shift()
   else options = {}
@@ -26,28 +27,53 @@ module.exports = function render (delta, options, callback) {
 
   if (options.formats !== undefined) formats = options.formats
 
-  jsdom.env('<div id="editor"></div>', scripts, (err, window) => {
-    if (err) return callback(err)
+  if (typeof callback === "function") { // Using challback
+    jsdom.env('<div id="editor"></div>', scripts, (err, window) => {
+      if (err) return callback(err)
 
-    window.document.getSelection = function () {
-      return {
-        getRangeAt: function () {}
+      window.document.getSelection = function () {
+        return {
+          getRangeAt: function () {}
+        }
       }
-    }
 
-    // register custom format
-    for ( let name in formats) {
-      window.Quill.register(name, formats[name])
-    }
+      // register custom format
+      for ( let name in formats) {
+        window.Quill.register(name, formats[name])
+      }
 
-    let quill = new window.Quill('#editor', options)
+      let quill = new window.Quill('#editor', options)
 
-    quill.setContents(delta)
+      quill.setContents(delta)
 
-    if (typeof callback === "function") {
       callback(err, window.document.querySelector('.ql-editor').innerHTML)
-    }
 
-    window.close()
-  })
+      window.close()
+    })
+  } else { // Using promise
+    return new Promise(function (fulfill, reject) {
+      jsdom.env('<div id="editor"></div>', scripts, (err, window) => {
+        if (err) return reject(err)
+
+        window.document.getSelection = function () {
+          return {
+            getRangeAt: function () {}
+          }
+        }
+
+        // register custom format
+        for ( let name in formats) {
+          window.Quill.register(name, formats[name])
+        }
+
+        let quill = new window.Quill('#editor', options)
+
+        quill.setContents(delta)
+
+        fulfill(window.document.querySelector('.ql-editor').innerHTML)
+
+        window.close()
+      })
+    })
+  }
 }

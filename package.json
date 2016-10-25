@@ -16,6 +16,7 @@
   "dependencies": {
     "jsdom": "^9.8.0",
     "mutation-observer": "^1.0.2",
+    "promise": "^7.1.1",
     "quill": "^1.1.1"
   },
   "devDependencies": {},

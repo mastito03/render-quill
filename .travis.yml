@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "6"
+  - "4"
+
+deploy:
+  provider: npm
+  api_key: "09efe9ba-2067-4368-b3d6-dae448010f85"
+  on:
+    tags: true
+    branch: master
