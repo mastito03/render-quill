@@ -1,4 +1,4 @@
-# render-quill ![](https://travis-ci.org/mastito03/render-quill.svg?branch=master)
+# render-quill [![Build Status](https://travis-ci.org/mastito03/render-quill.svg?branch=master)](https://travis-ci.org/mastito03/render-quill)
 render quill delta to html string on server
 
 ## Example
