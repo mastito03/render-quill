@@ -2,7 +2,7 @@ var assert = require('assert')
 var render = require('../index.js')
 
 describe('#render()', function() {
-    it('should render delta', function() {
+    it('should render delta', function(done) {
       delta = {
         ops: [{
           insert: 'Hello',
@@ -15,7 +15,7 @@ describe('#render()', function() {
       }
       html = "<p><em>Hello</em><span> world!!</span></p>"
       render(delta).then( output => {
-        assert.equal(output, html)
-      })
+        done(assert.equal(output, html))
+      }).catch( error => { done(error) })
   })
 })
