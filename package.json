@@ -4,7 +4,7 @@
   "description": "render quill delta to html string on server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha"
   },
   "keywords": [
     "quill",
@@ -19,7 +19,9 @@
     "promise": "^7.1.1",
     "quill": "^1.1.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^3.1.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mastito03/render-quill.git"
