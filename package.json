@@ -4,7 +4,7 @@
   "description": "render quill delta to html string on server",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha"
+    "test": "mocha"
   },
   "keywords": [
     "quill",
