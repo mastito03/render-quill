@@ -1,7 +1,7 @@
 var assert = require('assert')
 var render = require('../index.js')
 
-delta = {
+var delta = {
   ops: [{
     insert: 'Hello',
     attributes: {
@@ -11,10 +11,10 @@ delta = {
     insert: ' world!!'
   }]
 }
-html = "<p><em>Hello</em><span> world!!</span></p>"
+var html = '<p><em>Hello</em><span> world!!</span></p>'
 
-describe('#render() -> callback', function() {
-  it('should render delta', function(done) {
+describe('#render() -> callback', function () {
+  it('should render delta', function (done) {
     render(delta, (err, output) => {
       if (err) return done(err)
       done(assert.equal(output, html))
@@ -22,10 +22,10 @@ describe('#render() -> callback', function() {
   })
 })
 
-describe('#render() -> promise', function() {
-  it('should render delta', function(done) {
-    render(delta).then( output => {
+describe('#render() -> promise', function () {
+  it('should render delta', function (done) {
+    render(delta).then(output => {
       done(assert.equal(output, html))
-    }).catch( error => { done(error) })
+    }).catch(error => { done(error) })
   })
 })
