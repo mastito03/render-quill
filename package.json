@@ -24,7 +24,7 @@
   },
   "greenkeeper": {
     "ignore": [
-      "quill",
+      "quill"
     ]
   },
   "repository": {
