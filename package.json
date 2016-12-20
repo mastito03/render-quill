@@ -14,7 +14,7 @@
   "author": "mastito03",
   "license": "MIT",
   "dependencies": {
-    "jsdom": "^9.8.0",
+    "jsdom": "^9.9.1",
     "mutation-observer": "^1.0.2",
     "promise": "^7.1.1",
     "quill": "1.1.2"
