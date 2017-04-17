@@ -46,7 +46,7 @@ module.exports = function render (delta, options, callback) {
 
   let scripts = [quill, mutationObserver]
 
-  if (options.scripts !== undefined) scripts += options.scripts
+  if (options.scripts !== undefined) scripts = scripts.concat(options.scripts)
 
   let formats = {}
 
